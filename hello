@@ -1,0 +1,3 @@
+#!/Users/catharinakomrij/.nvm/versions/node/v10.18.1/bin/node
+
+console.log("Hello, world!");
