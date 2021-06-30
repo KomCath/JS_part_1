@@ -1,0 +1,22 @@
+#!/Users/catharinakomrij/.nvm/versions/node/v10.18.1/bin/node
+
+let fs = require("fs");
+let Phrase = require("mhartl-palindrome");
+
+let text = fs.readFileSync("phrases.txt", "utf-8");
+
+// detects if a line from phrases.txt is a palindrome.
+text.split("\n").forEach(function(line) {
+  let phrase = new Phrase(line);
+  if (phrase.palindrome()) {
+    console.log("palindrome detected:", line);
+  } 
+});
+
+// adds to the palindromes.txt if a line from phrases.txt is a palindrome.
+text.split("\n").forEach(function(line) {
+  let phrase = new Phrase(line);
+  if (phrase.palindrome()) {
+    const data = fs.writeFileSync("palindromes.txt", `\n ${line}`, { flag: 'a+' });
+  } 
+});

@@ -1,0 +1,16 @@
+#!/Users/catharinakomrij/.nvm/versions/node/v10.18.1/bin/node
+
+let urllib = require('urllib');
+let Phrase = require("mhartl-palindrome");
+let url = 'https://cdn.learnenough.com/phrases.txt';
+
+
+urllib.request(url, { followRedirect: true }, function (error, data, response) {
+  let body = data.toString();
+  let lines = body.split("\n");
+  let palindromes = lines.filter(line => new Phrase(line).palindrome());
+
+  palindromes.forEach(function(palindrome) {
+    console.log("palindrome detected:", palindrome);
+  });
+});
